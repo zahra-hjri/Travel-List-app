@@ -2,7 +2,7 @@ import "./App.css";
 import "./index.css";
 
 function App() {
-  return <div className="h-screen w-full">helllllo</div>;
+  return <div className="">helllllo</div>;
 }
 
 export default App;
