@@ -1,11 +1,11 @@
 @media screen and (min-width: 425px) {
   .main {
-    height: 5.7rem;
+    height: 6.05rem;
   }
 }
 
 @media screen and (min-width: 728px) {
   .main {
-    height: 3.7rem;
+    height: 5rem;
   }
 }

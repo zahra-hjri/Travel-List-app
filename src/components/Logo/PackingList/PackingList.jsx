@@ -1,21 +1,16 @@
 import initialItems from "../../../initialItems";
+import Items from "../Items/Items";
 
 const PackingList = () => {
-  initialItems.map((item) => {
-    console.log(item);
-  });
-
   return (
-    <div className="bg-amber-950 h-96 flex justify-center items-end">
-      {initialItems.map((item) => {
-        return (
-          <>
-            <p className="text-white">{item.description}</p>
-          </>
-        );
-      })}
+    <div className="bg-amber-950 h-96 flex flex-col justify-between">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+        {initialItems.map((item) => (
+          <Items itemObj={item} key={item.id} />
+        ))}
+      </ul>
 
-      <form className="pb-3">
+      <form className="flex justify-center pb-2">
         <input
           placeholder="SORT BY INPUT ORDER"
           className="mx-1 lg:mx-2 w-48 md:w-52 rounded-full text-sm bg-orange-200 placeholder:text-black text-center"
