@@ -1,12 +1,12 @@
-import initialItems from "../../../initialItems";
+// import initialItems from "../../../initialItems";
 import Items from "../Items/Items";
 
-const PackingList = () => {
+const PackingList = ({ items, onDeleteItem }) => {
   return (
     <div className="bg-amber-950 h-96 flex flex-col justify-between">
       <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
-        {initialItems.map((item) => (
-          <Items itemObj={item} key={item.id} />
+        {items.map((item) => (
+          <Items itemObj={item} key={item.id} onDeleteItem={onDeleteItem} />
         ))}
       </ul>
 
