@@ -1,6 +1,7 @@
 import "./App.css";
 import "./index.css";
 import { useState } from "react";
+
 import Logo from "./components/Logo/Logo";
 import Form from "./components/Logo/Form/Form";
 import PackingList from "./components/Logo/PackingList/PackingList";
@@ -11,6 +12,15 @@ function App() {
   const handleDeleteItem = (id) => {
     setItems(items.filter((item) => item.id !== id));
   };
+
+  const handleToggleItem = (id) => {
+    setItems((items) =>
+      items.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+    console.log(items);
+  };
   return (
     <div className="font-mono">
       <Logo />
@@ -19,6 +29,7 @@ function App() {
         items={items}
         setItems={setItems}
         onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
       />
       <Stats />
     </div>
