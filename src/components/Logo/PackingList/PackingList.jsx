@@ -1,15 +1,33 @@
 // import initialItems from "../../../initialItems";
+import { useState } from "react";
 import Items from "../Items/Items";
 
 const PackingList = ({ items, onDeleteItem, onToggleItem, setItems }) => {
+  const [sortBy, setSortBy] = useState("input");
+
+  let sortedItems;
+
+  if (sortBy === "input") sortedItems = items;
+  if (sortBy === "description")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => a.description.localeCompare(b.description));
+
+  if (sortBy === "packed")
+    sortedItems = items
+      .slice()
+      .sort((a, b) => Number(a.packed) - Number(b.packed));
   const clearAllItems = () => {
-    setItems([]);
+    const confirmed = window.confirm(
+      "Are you sure you want to delete all items"
+    );
+    if (confirmed) setItems([]);
   };
 
   return (
     <div className="bg-amber-950 h-96 flex flex-col justify-between">
       <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
-        {items.map((item) => (
+        {sortedItems.map((item) => (
           <Items
             itemObj={item}
             key={item.id}
@@ -19,11 +37,15 @@ const PackingList = ({ items, onDeleteItem, onToggleItem, setItems }) => {
         ))}
       </ul>
 
-      <form className="flex justify-center pb-2">
-        <select className="mx-1 md:py-1 lg:mx-2 w-48 md:w-52 cursor-pointer rounded-full text-sm bg-orange-200 placeholder:text-black text-center">
-          <option>SORT BY INPUT ORDER</option>
-          <option>SORT BY INPUT ORDER</option>
-          <option>SORT BY INPUT ORDER</option>
+      <div className="actions flex justify-center pb-2">
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="mx-1 md:py-1 lg:mx-2 w-48 md:w-52 cursor-pointer rounded-full text-sm bg-orange-200 placeholder:text-black text-center"
+        >
+          <option value="input">SORT BY INPUT ORDER</option>
+          <option value="description">SORT BY DESCRIPTION</option>
+          <option value="packed">SORT BY PACKED STATUS</option>
         </select>
         <button
           onClick={clearAllItems}
@@ -31,7 +53,7 @@ const PackingList = ({ items, onDeleteItem, onToggleItem, setItems }) => {
         >
           CLEAR LIST
         </button>
-      </form>
+      </div>
     </div>
   );
 };
