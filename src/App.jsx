@@ -10,7 +10,8 @@ import Stats from "./components/Logo/Stats/Stats";
 function App() {
   const [items, setItems] = useState([]);
   const handleDeleteItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
+    const updateDeleteItem = items.filter((item) => item.id !== id);
+    setItems(updateDeleteItem);
   };
 
   const handleToggleItem = (id) => {
@@ -19,7 +20,6 @@ function App() {
         item.id === id ? { ...item, packed: !item.packed } : item
       )
     );
-    console.log(items);
   };
   return (
     <div className="font-mono">
@@ -31,7 +31,7 @@ function App() {
         onDeleteItem={handleDeleteItem}
         onToggleItem={handleToggleItem}
       />
-      <Stats />
+      <Stats items={items} onToggleItem={handleToggleItem} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ const Items = ({ itemObj, onDeleteItem, onToggleItem }) => {
     <div>
       <li className="px-7 pt-4">
         <input
-          className="mx-1 checkmark"
+          className="mx-2"
           type="checkbox"
           value={itemObj.packed}
           onChange={() => onToggleItem(itemObj.id)}
