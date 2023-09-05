@@ -26,7 +26,7 @@ const PackingList = ({ items, onDeleteItem, onToggleItem, setItems }) => {
 
   return (
     <div className="bg-amber-950 h-96 flex flex-col justify-between">
-      <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
         {sortedItems.map((item) => (
           <Items
             itemObj={item}
