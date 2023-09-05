@@ -6,6 +6,9 @@ export default {
       height: {
         18: "4.7rem",
       },
+      screens: {
+        xs: "425px",
+      },
     },
   },
   plugins: [require("daisyui")],

@@ -3,7 +3,7 @@ import "./Items.css";
 const Items = ({ itemObj, onDeleteItem, onToggleItem }) => {
   return (
     <div>
-      <li className="px-7 pt-4 flex">
+      <li className=" pt-4 flex">
         <input
           className="mx-1"
           type="checkbox"

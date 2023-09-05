@@ -3,7 +3,7 @@ import "./Stats.css";
 const Stats = ({ items }) => {
   if (!items.length) {
     return (
-      <p className="bg-teal-600 h-18 flex justify-center items-center text-sm md:text-lg p-4 font-bold">
+      <p className="bg-teal-600 h-18 flex justify-center items-center text-center text-sm md:text-lg p-4 font-bold">
         Start adding some items to your packing list 🚀
       </p>
     );
